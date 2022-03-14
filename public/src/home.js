@@ -99,41 +99,23 @@ function getMostPopularAuthors(books, authors) {
       result.push({name :`${authors[index].name.first} ${authors[index].name.last}`, count: 0})
     }
   }
-  
-}
-
-/*
-//   This organizes the author names into an array ***Works***
-  let authorNames = [];
-  for (let index in authors) {
-    if (!authorNames.includes(authors[index.authorId])) {
-      authorNames.push(`${authors[index].name.first} ${authors[index].name.last}`);
-    }
-  } 
-// Formatting the array into objects, as per the requirements ***Works***
-  let result = authorNames.reduce((total, writer) => {
-    total.push({name: `${writer}`, count: 0})
-    return total;
-  }, []);
-//   I will now need to count each time a book has been borrowed, and mutate the 'count' value of the current book within result, with the books[i].borrows.length
-  books.forEach((book) => {
-    let authorName = authors.find((x) => {
-      if (book.authorId === x.id) {
-        return x.id;
+  result.forEach((element) => {
+    let currentAuthor = authors.find((writer) => {
+      if (`${writer.name.first} ${writer.name.last}` === element.name) {
+        return writer;
       }
     })
-    result.forEach((element) => {
-      if (authorName === element.name) {
-        element.count += book.borrows.length
+    let writtenByAuthor = books.filter((book) => {
+      if (currentAuthor.id === book.authorId) {
+        element.count += book.borrows.length;
       }
     })
   });
 //   This sorting process ranks the titles, based on their borrows
-  result.sort((titleA, titleB) => (titleA.count < titleB.count) ? 1 : -1)
+  result.sort((elemA, elemB) => (elemA.count < elemB.count) ? 1 : -1)
 //   The return statement will slice based on what the question asked
   return result.slice(0, 5);
-*/
-
+}
 module.exports = {
   getTotalBooksCount,
   getTotalAccountsCount,
