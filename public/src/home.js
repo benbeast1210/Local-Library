@@ -1,4 +1,3 @@
-// Working function
 function getTotalBooksCount(books) {
   let result = 0
   for (let index in books) {
@@ -9,9 +8,8 @@ function getTotalBooksCount(books) {
   return result;
 }
 
-// Working function
 function getTotalAccountsCount(accounts) {
-    let result = 0
+  let result = 0
   for (let index in accounts) {
     if (true) {
       result++
@@ -20,22 +18,21 @@ function getTotalAccountsCount(accounts) {
   return result;
 }
 
-// Working function
+// Working function (implemented .map() here)
 function getBooksBorrowedCount(books) {
   let checkedOut = [];
   let available = [];
 // a for loop will determine the check out status of the book 
-  for (let index in books) {
-    if(!books[index].borrows[0].returned) {
-      checkedOut.push(books[index]);
-    } else if (books[index].borrows[0].returned){
-      available.push(books[index]);
+  const fillTheArrays = books.map((book) => {
+    if (!book.borrows[0].returned) {
+      checkedOut.push(book);
+    } else if (book.borrows[0].returned){
+      available.push(book);
     }
-  }
+  })
   return checkedOut.length
 }
 
-// Working function
 function getMostCommonGenres(books) {
 //   I'm going to start by making a genre counter, listing each genre and pushing their values to an array called 'genreArray' ***WORKS*** 
   let genreArray = [];
@@ -62,7 +59,6 @@ function getMostCommonGenres(books) {
   return resultUncut.slice(0, 5);
 }
 
-// Working function
 function getMostPopularBooks(books) {
 //   This organizes the book titles into an array
   let popBooksArray = [];
@@ -90,7 +86,6 @@ function getMostPopularBooks(books) {
   return resultUncut.slice(0, 5);
 }
 
-// TODO
 function getMostPopularAuthors(books, authors) {
 //   This will format the author names and counts ***Works***
   let result = [];
@@ -99,6 +94,7 @@ function getMostPopularAuthors(books, authors) {
       result.push({name :`${authors[index].name.first} ${authors[index].name.last}`, count: 0})
     }
   }
+//   I need to go through each result, and filter books down to ones written by the currently indexed result element
   result.forEach((element) => {
     let currentAuthor = authors.find((writer) => {
       if (`${writer.name.first} ${writer.name.last}` === element.name) {
