@@ -1,4 +1,3 @@
-// Working function
 function findAuthorById(authors, id) {
 //   for loop will pull the correct author object
   for (let index in authors) {
@@ -8,7 +7,6 @@ function findAuthorById(authors, id) {
   }
 }
 
-// Working function
 function findBookById(books, id) {
 //   for loop will pull the correct author object
   for (let index in books) {
@@ -18,22 +16,25 @@ function findBookById(books, id) {
   }
 }
 
-// Working function
-function partitionBooksByBorrowedStatus(books) {
-  let checkedOut = [];
-  let available = [];
-// a for loop will determine the check out status of the book 
-  for (let index in books) {
-    if(!books[index].borrows[0].returned) {
-      checkedOut.push(books[index]);
-    } else if (books[index].borrows[0].returned){
-      available.push(books[index]);
-    }
-  }
-  return [checkedOut, available];
+// Helper function 
+function booksUnavailable(books) {
+  return books.filter((book) => 
+   book.borrows.some((borrow) => borrow.returned === false)
+  );
 }
 
-// Working function 
+// Working function (implemented helper function here)
+function partitionBooksByBorrowedStatus(books) {
+  var unavailable = booksUnavailable(books);
+  let available = books.filter((book) => 
+    book.borrows.every((borrow) => 
+      borrow.returned === true
+    )
+  );
+  return [[...unavailable], [...available]];
+}
+
+ 
 function getBorrowersForBook(book, accounts) { 
 //   This code uses a simiar concept to that of "getBooksPossessedByAccount", although I need to find a way to limit arrays in order to make it work.
   let result = [];
