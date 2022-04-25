@@ -1,7 +1,7 @@
 #### Deployment: *Work In Progress* Currently, the only way to view the page is to do the following:
 >- On the command line: 
-  >- run `npm i`
-  >- then `npm start`
+  >>- run `npm i`
+  >>- run `npm start`
 
 # Local-Library 
 
