@@ -1,7 +1,7 @@
 {
   "name": "project-local-library",
   "version": "1.0.0",
-  "description": "",
+  "description": "This website will be capable of managing items being borrowed and returned, as well as their borrowers as profiles. Currently, it's setup to mimic a library service handling books and their borrowers.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -17,7 +17,7 @@
     "test:solution": "npm run docker:build && npm run docker:test"
   },
   "keywords": [],
-  "author": "",
+  "author": "Benjamin Sams",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
