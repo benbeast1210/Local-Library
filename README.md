@@ -33,10 +33,4 @@
 >
 > This is performed for each 'user' the user selects.
 
-### TODO: 
-
->- Implement: 
-  >>- account creation/management (user inputs info as given from customer)
-  >>- account activity (checking out book, checking in book)
-  >>- book (item) creation/management
-  >>- account page
+See Kanban Board for implementation updates.
